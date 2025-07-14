@@ -1,12 +1,18 @@
-"use client"
-import { useState, useEffect } from "react"
-import type React from "react"
+"use client";
+import { useState, useEffect } from "react";
+import type React from "react";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { GraduationCap, MapPin, Users, Star } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { GraduationCap, MapPin, Users, Star } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 // Mock data for all 50 schools (simplified for search functionality)
 const allSchools = [
@@ -20,7 +26,8 @@ const allSchools = [
     rating: 4.8,
     fees: "45,000 ETB/year",
     image: "/placeholder.svg?height=300&width=400",
-    description: "Premier international boarding school in the heart of Ethiopia's capital",
+    description:
+      "Premier international boarding school in the heart of Ethiopia's capital",
   },
   {
     id: 2,
@@ -80,7 +87,8 @@ const allSchools = [
     rating: 4.3,
     fees: "38,000 ETB/year",
     image: "/placeholder.svg?height=300&width=400",
-    description: "Modern facilities and international standards in northern Ethiopia",
+    description:
+      "Modern facilities and international standards in northern Ethiopia",
   },
   {
     id: 7,
@@ -104,7 +112,8 @@ const allSchools = [
     rating: 4.6,
     fees: "33,000 ETB/year",
     image: "/placeholder.svg?height=300&width=400",
-    description: "Specialized in science and technology education with modern laboratories",
+    description:
+      "Specialized in science and technology education with modern laboratories",
   },
   {
     id: 9,
@@ -128,7 +137,8 @@ const allSchools = [
     rating: 4.4,
     fees: "30,000 ETB/year",
     image: "/placeholder.svg?height=300&width=400",
-    description: "Cultural immersion and academic excellence in the historic city of Harar",
+    description:
+      "Cultural immersion and academic excellence in the historic city of Harar",
   },
   {
     id: 11,
@@ -152,7 +162,8 @@ const allSchools = [
     rating: 3.9,
     fees: "18,000 ETB/year",
     image: "/placeholder.svg?height=300&width=400",
-    description: "Well-established public boarding school with strong academic tradition",
+    description:
+      "Well-established public boarding school with strong academic tradition",
   },
   {
     id: 13,
@@ -164,7 +175,8 @@ const allSchools = [
     rating: 4.3,
     fees: "29,000 ETB/year",
     image: "/placeholder.svg?height=300&width=400",
-    description: "Beautiful lakeside campus with focus on environmental conservation",
+    description:
+      "Beautiful lakeside campus with focus on environmental conservation",
   },
   {
     id: 14,
@@ -176,7 +188,8 @@ const allSchools = [
     rating: 4.2,
     fees: "27,000 ETB/year",
     image: "/placeholder.svg?height=300&width=400",
-    description: "Education rooted in Ethiopia's ancient history and traditions",
+    description:
+      "Education rooted in Ethiopia's ancient history and traditions",
   },
   {
     id: 15,
@@ -188,12 +201,13 @@ const allSchools = [
     rating: 4.1,
     fees: "34,000 ETB/year",
     image: "/placeholder.svg?height=300&width=400",
-    description: "Diverse international community with multicultural education approach",
+    description:
+      "Diverse international community with multicultural education approach",
   },
-]
+];
 
 function ImageCarousel() {
-  const [currentImage, setCurrentImage] = useState(0)
+  const [currentImage, setCurrentImage] = useState(0);
 
   // Array of school images from public/school-images folder
   const schoolImages = [
@@ -232,27 +246,29 @@ function ImageCarousel() {
       alt: "Modern science laboratory",
       title: "Science Excellence",
     },
-  ]
+  ];
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % schoolImages.length)
-    }, 4000) // Change image every 4 seconds
+      setCurrentImage((prev) => (prev + 1) % schoolImages.length);
+    }, 4000); // Change image every 4 seconds
 
-    return () => clearInterval(timer)
-  }, [schoolImages.length])
+    return () => clearInterval(timer);
+  }, [schoolImages.length]);
 
   const goToSlide = (index: number) => {
-    setCurrentImage(index)
-  }
+    setCurrentImage(index);
+  };
 
   const goToPrevious = () => {
-    setCurrentImage((prev) => (prev - 1 + schoolImages.length) % schoolImages.length)
-  }
+    setCurrentImage(
+      (prev) => (prev - 1 + schoolImages.length) % schoolImages.length
+    );
+  };
 
   const goToNext = () => {
-    setCurrentImage((prev) => (prev + 1) % schoolImages.length)
-  }
+    setCurrentImage((prev) => (prev + 1) % schoolImages.length);
+  };
 
   return (
     <div className="relative w-full h-[600px] md:h-[700px] rounded-lg overflow-hidden shadow-2xl">
@@ -274,7 +290,9 @@ function ImageCarousel() {
             />
             {/* Image Overlay with Title */}
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-              <h3 className="text-white text-xl font-semibold">{image.title}</h3>
+              <h3 className="text-white text-xl font-semibold">
+                {image.title}
+              </h3>
             </div>
           </div>
         ))}
@@ -286,8 +304,18 @@ function ImageCarousel() {
         className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 transition-all duration-200"
         aria-label="Previous image"
       >
-        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        <svg
+          className="w-6 h-6 text-white"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M15 19l-7-7 7-7"
+          />
         </svg>
       </button>
 
@@ -296,8 +324,18 @@ function ImageCarousel() {
         className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 transition-all duration-200"
         aria-label="Next image"
       >
-        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        <svg
+          className="w-6 h-6 text-white"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 5l7 7-7 7"
+          />
         </svg>
       </button>
 
@@ -308,7 +346,9 @@ function ImageCarousel() {
             key={index}
             onClick={() => goToSlide(index)}
             className={`w-3 h-3 rounded-full transition-all duration-200 ${
-              index === currentImage ? "bg-white scale-110" : "bg-white/50 hover:bg-white/70"
+              index === currentImage
+                ? "bg-white scale-110"
+                : "bg-white/50 hover:bg-white/70"
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />
@@ -325,19 +365,21 @@ function ImageCarousel() {
         />
       </div>
     </div>
-  )
+  );
 }
 
 export default function HomePage() {
-  const [searchQuery, setSearchQuery] = useState("")
-  const [filteredSchools, setFilteredSchools] = useState(allSchools.slice(0, 3)) // Show first 3 by default
-  const [showSearchResults, setShowSearchResults] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredSchools, setFilteredSchools] = useState(
+    allSchools.slice(0, 3)
+  ); // Show first 3 by default
+  const [showSearchResults, setShowSearchResults] = useState(false);
 
   // Filter schools based on search query
   useEffect(() => {
     if (searchQuery.trim() === "") {
-      setFilteredSchools(allSchools.slice(0, 3)) // Show default featured schools
-      setShowSearchResults(false)
+      setFilteredSchools(allSchools.slice(0, 3)); // Show default featured schools
+      setShowSearchResults(false);
     } else {
       const filtered = allSchools.filter(
         (school) =>
@@ -345,16 +387,16 @@ export default function HomePage() {
           school.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
           school.region.toLowerCase().includes(searchQuery.toLowerCase()) ||
           school.type.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          school.description.toLowerCase().includes(searchQuery.toLowerCase()),
-      )
-      setFilteredSchools(filtered)
-      setShowSearchResults(true)
+          school.description.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredSchools(filtered);
+      setShowSearchResults(true);
     }
-  }, [searchQuery])
+  }, [searchQuery]);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value)
-  }
+    setSearchQuery(e.target.value);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -370,13 +412,22 @@ export default function HomePage() {
               <Link href="/" className="text-sm font-medium hover:text-primary">
                 Home
               </Link>
-              <Link href="/schools" className="text-sm font-medium hover:text-primary">
+              <Link
+                href="/schools"
+                className="text-sm font-medium hover:text-primary"
+              >
                 Schools
               </Link>
-              <Link href="/about" className="text-sm font-medium hover:text-primary">
+              <Link
+                href="/about"
+                className="text-sm font-medium hover:text-primary"
+              >
                 About
               </Link>
-              <Link href="/contact" className="text-sm font-medium hover:text-primary">
+              <Link
+                href="/contact"
+                className="text-sm font-medium hover:text-primary"
+              >
                 Contact
               </Link>
             </div>
@@ -395,14 +446,19 @@ export default function HomePage() {
                 in Ethiopia
               </h1>
               <p className="text-xl text-gray-600 leading-relaxed">
-                Discover 50+ premium boarding schools across Ethiopia. Compare facilities, programs, and admission
-                requirements to find the best fit for your child's education.
+                Discover 50+ premium boarding schools across Ethiopia. Compare
+                facilities, programs, and admission requirements to find the
+                best fit for your child's education.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button asChild size="lg" className="text-lg px-8">
                   <Link href="/schools">Explore Schools</Link>
                 </Button>
-                <Button variant="outline" size="lg" className="text-lg px-8 bg-transparent">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="text-lg px-8 bg-transparent"
+                >
                   Learn More
                 </Button>
               </div>
@@ -419,11 +475,15 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {showSearchResults ? "Search Results" : "Featured Boarding Schools"}
+              {showSearchResults
+                ? "Search Results"
+                : "Featured Boarding Schools"}
             </h2>
             <p className="text-xl text-gray-600 mb-8">
               {showSearchResults
-                ? `Found ${filteredSchools.length} school${filteredSchools.length !== 1 ? "s" : ""} matching "${searchQuery}"`
+                ? `Found ${filteredSchools.length} school${
+                    filteredSchools.length !== 1 ? "s" : ""
+                  } matching "${searchQuery}"`
                 : "Explore some of our top-rated boarding schools"}
             </p>
 
@@ -448,14 +508,24 @@ export default function HomePage() {
           {filteredSchools.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredSchools.map((school) => (
-                <Card key={school.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+                <Card
+                  key={school.id}
+                  className="overflow-hidden hover:shadow-lg transition-shadow"
+                >
                   <div className="relative h-48">
-                    <Image src={school.image || "/placeholder.svg"} alt={school.name} fill className="object-cover" />
+                    <Image
+                      src={school.image || "/placeholder.svg"}
+                      alt={school.name}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
-                        <CardTitle className="text-lg mb-2">{school.name}</CardTitle>
+                        <CardTitle className="text-lg mb-2">
+                          {school.name}
+                        </CardTitle>
                         <CardDescription className="flex items-center mb-2">
                           <MapPin className="h-4 w-4 mr-1" />
                           {school.location}, {school.region}
@@ -463,25 +533,41 @@ export default function HomePage() {
                       </div>
                       <div className="flex items-center">
                         <Star className="h-4 w-4 text-yellow-400 mr-1" />
-                        <span className="text-sm font-medium">{school.rating}</span>
+                        <span className="text-sm font-medium">
+                          {school.rating}
+                        </span>
                       </div>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-gray-600 mb-4">{school.description}</p>
+                    <p className="text-sm text-gray-600 mb-4">
+                      {school.description}
+                    </p>
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center text-sm text-gray-500">
                         <Users className="h-4 w-4 mr-1" />
                         {school.students} students
                       </div>
-                      <div className="text-sm font-semibold text-primary">{school.fees}</div>
+                      <div className="text-sm font-semibold text-primary">
+                        {school.fees}
+                      </div>
                     </div>
                     <div className="flex gap-2">
                       <Button asChild className="flex-1">
                         <Link href="/schools">View Details</Link>
                       </Button>
-                      <Button asChild variant="outline" className="flex-1 bg-transparent">
-                        <Link href="/schools">Apply Now</Link>
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="flex-1 bg-transparent"
+                      >
+                        <Link
+                          href={`/apply?school=${encodeURIComponent(
+                            school.name
+                          )}`}
+                        >
+                          Apply Now
+                        </Link>
                       </Button>
                     </div>
                   </CardContent>
@@ -513,8 +599,8 @@ export default function HomePage() {
             <div className="text-center mt-12">
               <Button
                 onClick={() => {
-                  setSearchQuery("")
-                  setShowSearchResults(false)
+                  setSearchQuery("");
+                  setShowSearchResults(false);
                 }}
                 variant="outline"
                 className="mr-4"
@@ -532,11 +618,19 @@ export default function HomePage() {
       {/* CTA Section */}
       <section className="py-20 bg-primary text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Find Your Perfect School?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Ready to Find Your Perfect School?
+          </h2>
           <p className="text-xl mb-8 opacity-90">
-            Start your journey today and discover the best boarding school for your child
+            Start your journey today and discover the best boarding school for
+            your child
           </p>
-          <Button asChild size="lg" variant="secondary" className="text-lg px-8">
+          <Button
+            asChild
+            size="lg"
+            variant="secondary"
+            className="text-lg px-8"
+          >
             <Link href="/schools">Get Started</Link>
           </Button>
         </div>
@@ -551,7 +645,9 @@ export default function HomePage() {
                 <GraduationCap className="h-6 w-6" />
                 <span className="text-xl font-bold">EthioBoarding</span>
               </div>
-              <p className="text-gray-400">Your trusted guide to Ethiopian boarding schools</p>
+              <p className="text-gray-400">
+                Your trusted guide to Ethiopian boarding schools
+              </p>
             </div>
             <div>
               <h3 className="font-semibold mb-4">Quick Links</h3>
@@ -597,7 +693,5 @@ export default function HomePage() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
-
-

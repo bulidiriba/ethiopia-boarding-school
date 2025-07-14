@@ -1,11 +1,29 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { MapPin, Users, Star, Phone, Mail, Globe, Calendar, BookOpen, Trophy, Heart, GraduationCap } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
-import { notFound } from "next/navigation"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  MapPin,
+  Users,
+  Star,
+  Phone,
+  Mail,
+  Globe,
+  Calendar,
+  BookOpen,
+  Trophy,
+  Heart,
+  GraduationCap,
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
 // Mock data for school details
 const schoolsData = {
@@ -39,7 +57,11 @@ const schoolsData = {
       primary: "International Primary Curriculum (IPC) with Ethiopian Studies",
       secondary: "Cambridge IGCSE and A-Levels",
       languages: ["English", "Amharic", "French", "Arabic"],
-      specialPrograms: ["STEM Excellence", "Arts & Culture", "Leadership Development"],
+      specialPrograms: [
+        "STEM Excellence",
+        "Arts & Culture",
+        "Leadership Development",
+      ],
     },
     facilities: [
       "Modern Science Laboratories",
@@ -121,7 +143,11 @@ const schoolsData = {
       primary: "Ethiopian National Curriculum with English Enhancement",
       secondary: "Ethiopian Secondary Education with International Components",
       languages: ["Amharic", "English", "Arabic"],
-      specialPrograms: ["Environmental Studies", "Lake Ecology", "Cultural Heritage"],
+      specialPrograms: [
+        "Environmental Studies",
+        "Lake Ecology",
+        "Cultural Heritage",
+      ],
     },
     facilities: [
       "Lakeside Campus",
@@ -170,18 +196,18 @@ const schoolsData = {
       "Student Council",
     ],
   },
-}
+};
 
 interface SchoolPageProps {
-  params: Promise<{ slug: string }>
+  params: Promise<{ slug: string }>;
 }
 
 export default async function SchoolPage({ params }: SchoolPageProps) {
-  const { slug } = await params
-  const school = schoolsData[slug as keyof typeof schoolsData]
+  const { slug } = await params;
+  const school = schoolsData[slug as keyof typeof schoolsData];
 
   if (!school) {
-    notFound()
+    notFound();
   }
 
   return (
@@ -198,13 +224,22 @@ export default async function SchoolPage({ params }: SchoolPageProps) {
               <Link href="/" className="text-sm font-medium hover:text-primary">
                 Home
               </Link>
-              <Link href="/schools" className="text-sm font-medium hover:text-primary">
+              <Link
+                href="/schools"
+                className="text-sm font-medium hover:text-primary"
+              >
                 Schools
               </Link>
-              <Link href="/about" className="text-sm font-medium hover:text-primary">
+              <Link
+                href="/about"
+                className="text-sm font-medium hover:text-primary"
+              >
                 About
               </Link>
-              <Link href="/contact" className="text-sm font-medium hover:text-primary">
+              <Link
+                href="/contact"
+                className="text-sm font-medium hover:text-primary"
+              >
                 Contact
               </Link>
             </div>
@@ -227,7 +262,9 @@ export default async function SchoolPage({ params }: SchoolPageProps) {
             <div className="lg:col-span-2">
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <h1 className="text-3xl md:text-4xl font-bold mb-2">{school.name}</h1>
+                  <h1 className="text-3xl md:text-4xl font-bold mb-2">
+                    {school.name}
+                  </h1>
                   <div className="flex items-center text-gray-600 mb-2">
                     <MapPin className="h-5 w-5 mr-2" />
                     <span>
@@ -247,7 +284,9 @@ export default async function SchoolPage({ params }: SchoolPageProps) {
                   </div>
                 </div>
               </div>
-              <p className="text-gray-700 text-lg leading-relaxed">{school.description}</p>
+              <p className="text-gray-700 text-lg leading-relaxed">
+                {school.description}
+              </p>
             </div>
 
             <div className="lg:col-span-1">
@@ -281,13 +320,23 @@ export default async function SchoolPage({ params }: SchoolPageProps) {
                     <Globe className="h-4 w-4 mr-3 text-gray-500" />
                     <div>
                       <div className="text-sm text-gray-500">Website</div>
-                      <div className="font-medium text-sm">{school.website}</div>
+                      <div className="font-medium text-sm">
+                        {school.website}
+                      </div>
                     </div>
                   </div>
                   <div className="pt-4">
-                    <div className="text-2xl font-bold text-primary mb-2">{school.fees}</div>
-                    <Button className="w-full" size="lg">
-                      Apply Now
+                    <div className="text-2xl font-bold text-primary mb-2">
+                      {school.fees}
+                    </div>
+                    <Button asChild className="w-full" size="lg">
+                      <Link
+                        href={`/apply?school=${encodeURIComponent(
+                          school.name
+                        )}`}
+                      >
+                        Apply Now
+                      </Link>
                     </Button>
                   </div>
                 </CardContent>
@@ -302,7 +351,10 @@ export default async function SchoolPage({ params }: SchoolPageProps) {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {school.images.map((image, index) => (
-              <div key={index} className="relative h-48 rounded-lg overflow-hidden">
+              <div
+                key={index}
+                className="relative h-48 rounded-lg overflow-hidden"
+              >
                 <Image
                   src={image || "/placeholder.svg"}
                   alt={`${school.name} - Image ${index + 1}`}
@@ -382,11 +434,17 @@ export default async function SchoolPage({ params }: SchoolPageProps) {
                   <CardContent className="space-y-4">
                     <div>
                       <h4 className="font-semibold mb-2">Primary Education</h4>
-                      <p className="text-gray-600">{school.curriculum.primary}</p>
+                      <p className="text-gray-600">
+                        {school.curriculum.primary}
+                      </p>
                     </div>
                     <div>
-                      <h4 className="font-semibold mb-2">Secondary Education</h4>
-                      <p className="text-gray-600">{school.curriculum.secondary}</p>
+                      <h4 className="font-semibold mb-2">
+                        Secondary Education
+                      </h4>
+                      <p className="text-gray-600">
+                        {school.curriculum.secondary}
+                      </p>
                     </div>
                     <div>
                       <h4 className="font-semibold mb-2">Languages Offered</h4>
@@ -407,12 +465,14 @@ export default async function SchoolPage({ params }: SchoolPageProps) {
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-2">
-                      {school.curriculum.specialPrograms.map((program, index) => (
-                        <li key={index} className="flex items-start">
-                          <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                          <span className="text-gray-700">{program}</span>
-                        </li>
-                      ))}
+                      {school.curriculum.specialPrograms.map(
+                        (program, index) => (
+                          <li key={index} className="flex items-start">
+                            <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                            <span className="text-gray-700">{program}</span>
+                          </li>
+                        )
+                      )}
                     </ul>
                   </CardContent>
                 </Card>
@@ -439,21 +499,26 @@ export default async function SchoolPage({ params }: SchoolPageProps) {
                 <CardHeader>
                   <CardTitle>Admission Requirements</CardTitle>
                   <CardDescription>
-                    Please ensure you have all the following documents and requirements before applying
+                    Please ensure you have all the following documents and
+                    requirements before applying
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="grid md:grid-cols-2 gap-6">
                     <ul className="space-y-3">
-                      {school.admissionRequirements.map((requirement, index) => (
-                        <li key={index} className="flex items-start">
-                          <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                          <span className="text-gray-700">{requirement}</span>
-                        </li>
-                      ))}
+                      {school.admissionRequirements.map(
+                        (requirement, index) => (
+                          <li key={index} className="flex items-start">
+                            <div className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                            <span className="text-gray-700">{requirement}</span>
+                          </li>
+                        )
+                      )}
                     </ul>
                     <div className="bg-blue-50 p-6 rounded-lg">
-                      <h4 className="font-semibold mb-3">Application Process</h4>
+                      <h4 className="font-semibold mb-3">
+                        Application Process
+                      </h4>
                       <ol className="space-y-2 text-sm text-gray-600">
                         <li>1. Submit online application</li>
                         <li>2. Pay application fee</li>
@@ -472,17 +537,28 @@ export default async function SchoolPage({ params }: SchoolPageProps) {
               <Card>
                 <CardHeader>
                   <CardTitle>Fee Structure</CardTitle>
-                  <CardDescription>Annual fees breakdown for the academic year</CardDescription>
+                  <CardDescription>
+                    Annual fees breakdown for the academic year
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="grid md:grid-cols-2 gap-8">
                     <div className="space-y-4">
-                      {Object.entries(school.feesStructure).map(([category, amount], index) => (
-                        <div key={index} className="flex justify-between items-center py-2 border-b">
-                          <span className="font-medium capitalize">{category.replace(/([A-Z])/g, " $1")}</span>
-                          <span className="text-primary font-semibold">{amount}</span>
-                        </div>
-                      ))}
+                      {Object.entries(school.feesStructure).map(
+                        ([category, amount], index) => (
+                          <div
+                            key={index}
+                            className="flex justify-between items-center py-2 border-b"
+                          >
+                            <span className="font-medium capitalize">
+                              {category.replace(/([A-Z])/g, " $1")}
+                            </span>
+                            <span className="text-primary font-semibold">
+                              {amount}
+                            </span>
+                          </div>
+                        )
+                      )}
                     </div>
                     <div className="bg-green-50 p-6 rounded-lg">
                       <h4 className="font-semibold mb-3">Payment Options</h4>
@@ -502,12 +578,17 @@ export default async function SchoolPage({ params }: SchoolPageProps) {
               <Card>
                 <CardHeader>
                   <CardTitle>Extracurricular Activities</CardTitle>
-                  <CardDescription>Diverse activities to develop well-rounded students</CardDescription>
+                  <CardDescription>
+                    Diverse activities to develop well-rounded students
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="grid md:grid-cols-3 gap-6">
                     {school.extracurricular.map((activity, index) => (
-                      <div key={index} className="flex items-center p-3 bg-gray-50 rounded-lg">
+                      <div
+                        key={index}
+                        className="flex items-center p-3 bg-gray-50 rounded-lg"
+                      >
                         <div className="w-3 h-3 bg-primary rounded-full mr-3"></div>
                         <span className="font-medium">{activity}</span>
                       </div>
@@ -526,12 +607,15 @@ export default async function SchoolPage({ params }: SchoolPageProps) {
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold mb-4">Ready to Apply?</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Take the first step towards your child's exceptional education at {school.name}
+              Take the first step towards your child's exceptional education at{" "}
+              {school.name}
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="px-8">
-              Apply Now
+            <Button asChild size="lg" className="px-8">
+              <Link href={`/apply?school=${encodeURIComponent(school.name)}`}>
+                Apply Now
+              </Link>
             </Button>
             <Button size="lg" variant="outline" className="px-8 bg-transparent">
               Schedule Visit
@@ -552,7 +636,9 @@ export default async function SchoolPage({ params }: SchoolPageProps) {
                 <GraduationCap className="h-6 w-6" />
                 <span className="text-xl font-bold">EthioBoarding</span>
               </div>
-              <p className="text-gray-400">Your trusted guide to Ethiopian boarding schools</p>
+              <p className="text-gray-400">
+                Your trusted guide to Ethiopian boarding schools
+              </p>
             </div>
             <div>
               <h3 className="font-semibold mb-4">Quick Links</h3>
@@ -598,5 +684,5 @@ export default async function SchoolPage({ params }: SchoolPageProps) {
         </div>
       </footer>
     </div>
-  )
+  );
 }
