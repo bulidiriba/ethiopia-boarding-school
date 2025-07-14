@@ -14,9 +14,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { GraduationCap, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
 
 function ApplicationFormContent() {
   const searchParams = useSearchParams();
@@ -57,39 +58,7 @@ function ApplicationFormContent() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b">
-        <div className="container mx-auto px-4 py-4">
-          <nav className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-2">
-              <GraduationCap className="h-8 w-8 text-primary" />
-              <span className="text-2xl font-bold">EthioBoarding</span>
-            </Link>
-            <div className="hidden md:flex items-center space-x-6">
-              <Link href="/" className="text-sm font-medium hover:text-primary">
-                Home
-              </Link>
-              <Link
-                href="/schools"
-                className="text-sm font-medium hover:text-primary"
-              >
-                Schools
-              </Link>
-              <Link
-                href="/about"
-                className="text-sm font-medium hover:text-primary"
-              >
-                About
-              </Link>
-              <Link
-                href="/contact"
-                className="text-sm font-medium hover:text-primary"
-              >
-                Contact
-              </Link>
-            </div>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-8">
