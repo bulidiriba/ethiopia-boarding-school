@@ -16,6 +16,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { GraduationCap, ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { Footer } from "@/components/footer";
 
 function ApplicationFormContent() {
   const searchParams = useSearchParams();
@@ -509,7 +510,10 @@ function ApplicationFormContent() {
               <Button type="button" variant="outline" asChild>
                 <Link href="/schools">Cancel</Link>
               </Button>
-              <Button type="submit" className="px-8">
+              <Button
+                type="submit"
+                className="px-8 bg-blue-700 hover:bg-blue-800 text-white"
+              >
                 Submit Application
               </Button>
             </div>
@@ -518,61 +522,7 @@ function ApplicationFormContent() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 mt-16">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <GraduationCap className="h-6 w-6" />
-                <span className="text-xl font-bold">EthioBoarding</span>
-              </div>
-              <p className="text-gray-400">
-                Your trusted guide to Ethiopian boarding schools
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Quick Links</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li>
-                  <Link href="/schools" className="hover:text-white">
-                    All Schools
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/about" className="hover:text-white">
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/contact" className="hover:text-white">
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Regions</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li>Addis Ababa</li>
-                <li>Amhara</li>
-                <li>Oromia</li>
-                <li>Tigray</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Contact Info</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li>+251 11 123 4567</li>
-                <li>info@ethioboarding.com</li>
-                <li>Addis Ababa, Ethiopia</li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 EthioBoarding. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

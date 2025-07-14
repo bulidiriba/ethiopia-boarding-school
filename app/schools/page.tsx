@@ -14,6 +14,8 @@ import { Input } from "@/components/ui/input";
 import { MapPin, Users, Star, Search, GraduationCap } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
 
 // Mock data for 50 Ethiopian boarding schools
 const schools = [
@@ -768,39 +770,7 @@ export default function SchoolsPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b">
-        <div className="container mx-auto px-4 py-4">
-          <nav className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-2">
-              <GraduationCap className="h-8 w-8 text-primary" />
-              <span className="text-2xl font-bold">EthioBoarding</span>
-            </Link>
-            <div className="hidden md:flex items-center space-x-6">
-              <Link href="/" className="text-sm font-medium hover:text-primary">
-                Home
-              </Link>
-              <Link
-                href="/schools"
-                className="text-sm font-medium text-primary"
-              >
-                Schools
-              </Link>
-              <Link
-                href="/about"
-                className="text-sm font-medium hover:text-primary"
-              >
-                About
-              </Link>
-              <Link
-                href="/contact"
-                className="text-sm font-medium hover:text-primary"
-              >
-                Contact
-              </Link>
-            </div>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <section className="py-12 bg-gradient-to-r from-blue-50 to-indigo-100">
@@ -865,7 +835,10 @@ export default function SchoolsPage() {
                   </div>
                 )}
               </div>
-              <Button size="default" className="px-6 whitespace-nowrap">
+              <Button
+                size="default"
+                className="px-6 whitespace-nowrap bg-blue-700 hover:bg-blue-800 text-white"
+              >
                 Search
               </Button>
             </div>
@@ -924,15 +897,17 @@ export default function SchoolsPage() {
                       </div>
                     </div>
                     <div className="flex gap-2">
-                      <Button asChild className="flex-1">
+                      <Button
+                        asChild
+                        className="flex-1 bg-white text-gray-900 border border-gray-300 hover:bg-gray-50"
+                      >
                         <Link href={`/schools/${school.slug}`}>
                           View Details
                         </Link>
                       </Button>
                       <Button
                         asChild
-                        variant="outline"
-                        className="flex-1 bg-transparent"
+                        className="flex-1 bg-blue-700 hover:bg-blue-800 text-white"
                       >
                         <Link
                           href={`/apply?school=${encodeURIComponent(
@@ -987,61 +962,7 @@ export default function SchoolsPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <GraduationCap className="h-6 w-6" />
-                <span className="text-xl font-bold">EthioBoarding</span>
-              </div>
-              <p className="text-gray-400">
-                Your trusted guide to Ethiopian boarding schools
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Quick Links</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li>
-                  <Link href="/schools" className="hover:text-white">
-                    All Schools
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/about" className="hover:text-white">
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/contact" className="hover:text-white">
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Regions</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li>Addis Ababa</li>
-                <li>Amhara</li>
-                <li>Oromia</li>
-                <li>Tigray</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Contact Info</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li>+251 11 123 4567</li>
-                <li>info@ethioboarding.com</li>
-                <li>Addis Ababa, Ethiopia</li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 EthioBoarding. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
