@@ -18,10 +18,13 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import Image from "next/image";
+import { schools } from "@/utils/schools-data";
 
 function ApplicationFormContent() {
   const searchParams = useSearchParams();
   const schoolName = searchParams.get("school") || "Selected School";
+  const school = schools.find((s) => s.name === schoolName);
 
   const [formData, setFormData] = useState({
     studentName: "",
@@ -72,14 +75,38 @@ function ApplicationFormContent() {
           </Button>
         </div>
 
-        {/* Page Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
-            Apply to {schoolName}
-          </h1>
-          <p className="text-gray-600">
-            Complete the application form below to apply for admission
-          </p>
+        {/* Page Header with School Background */}
+        <div className="relative mb-8 rounded-lg overflow-hidden">
+          {/* Background Image */}
+          {school?.image && (
+            <div className="absolute inset-0 h-32 md:h-40">
+              <Image
+                src={school.image || "/placeholder.svg"}
+                alt={school.name}
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-black/50"></div>
+            </div>
+          )}
+
+          {/* Content */}
+          <div
+            className={`relative z-10 text-center py-8 md:py-12 px-4 ${
+              school?.image ? "text-white" : "text-gray-800"
+            }`}
+          >
+            <h1 className="text-3xl md:text-4xl font-bold mb-2">
+              Apply to {schoolName}
+            </h1>
+            <p
+              className={`text-lg ${
+                school?.image ? "text-gray-200" : "text-gray-600"
+              }`}
+            >
+              Complete the application form below to apply for admission
+            </p>
+          </div>
         </div>
 
         {/* Application Form */}
